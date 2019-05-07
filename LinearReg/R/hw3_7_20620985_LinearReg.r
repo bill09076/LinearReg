@@ -5,11 +5,11 @@ LinearReg <- function(x, y){
   cov = cov * sigma_square
   se_b = sqrt(diag(cov))
   t = b/se_b
+  p = matrix(rep(0,ncol(x)),ncol = 1)
   for(i in 1:ncol(x)){
     p[i,1] = 2*(1-pt(abs(t[i,1]),nrow(x)-ncol(x)))
   }
   index = 0:(ncol(x)-1)
   solution = data.frame(index, b, se_b, t, p)
-  show(solution)
   return(solution)
 }
